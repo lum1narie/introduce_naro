@@ -1,12 +1,12 @@
 let secondExpired = 0;
 let isRunning = false;
 
-function onSecondExpire() {
+const onSecondExpire = () => {
     secondExpired++;
     displayTime(secondExpired);
 }
 
-function displayTime(second) {
+const displayTime = (second) => {
     const second_remain = second % 60;
     const minute = Math.floor(second / 60) % 60;
     const hour = Math.floor(second / 3600);
@@ -25,7 +25,7 @@ function displayTime(second) {
     }
 }
 
-function displayRunningState(isRunning) {
+const displayRunningState = (isRunning) => {
     const buttonElement = document.querySelector('#toggleRunningButton');
     if (isRunning) {
         buttonElement.innerText = "ストップ";
@@ -34,13 +34,13 @@ function displayRunningState(isRunning) {
     }
 }
 
-function setTimerOn() {
+const setTimerOn = () => {
     timerID = setInterval(onSecondExpire, 1000);
     isRunning = true;
     displayRunningState(isRunning);
 }
 
-function setTimerOff() {
+const setTimerOff = () => {
     clearInterval(timerID);
     isRunning = false;
     displayRunningState(isRunning);
